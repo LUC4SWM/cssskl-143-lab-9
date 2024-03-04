@@ -34,6 +34,7 @@ public class MyWindow extends JFrame implements MouseListener {
 
     public static void main(String[] args) {
         MyWindow mw = new MyWindow();
-
+        MouseEvent mEv = new MouseEvent(mw, MouseEvent.MOUSE_CLICKED, System.currentTimeMillis(), 0, 0, 0, 4, false);
+        mw.mouseClicked(mEv);
     }
 }
