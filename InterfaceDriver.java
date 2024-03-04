@@ -16,8 +16,8 @@ public class InterfaceDriver {
     // comment and uncomment the demo functions in main to test
     public static void main(String[] args) {
 //        comparableDemo();
-        cloneableDemo();
-//        serializableDemo();
+//        cloneableDemo();
+        serializableDemo();
 //        actionListenerDemo();
     }
 
@@ -76,7 +76,12 @@ public class InterfaceDriver {
             System.err.println("Bad OOS");
         }
     }
+    /* Q: "What was your output?"
+    A: I got a NotSerializableException, and the message "Bad OOS".
 
+    Q: "What did we accomplish?"
+    A: The exception is properly caught in the method readObjectsFromFile.
+    * */
     private static void writeObjectsToFile() {
         try {
             //ObjectOutputStream os = new ObjectOutputStream( new FileOutputStream("object.dat"));
