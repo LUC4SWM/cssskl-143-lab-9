@@ -1,4 +1,4 @@
-/**
+import java.util.Arrays; /**
  * This class implements multiple sort algorithms.
  *
  * @author (your name)
@@ -12,19 +12,22 @@ public class Sort {
         int[] bubbleArray = new int[SIZE];
         int[] selectionArray = new int[SIZE];
         int[] insertionArray = new int[SIZE];
+        String[] strBubbleArray = new String[SIZE];
 
         for (int i = 0; i < SIZE; i++) {
             bubbleArray[i] = (int) (Math.random() * 52);
             selectionArray[i] = (int) (Math.random() * 52);
             insertionArray[i] = (int) (Math.random() * 52);
+            strBubbleArray[i] =(int) (Math.random() * 52) + "";
         }
 
-        System.out.println("Array before bubble sort:");
-        System.out.println(Arrays.toString(bubbleArray));
-        bubbleSort(bubbleArray);
-        System.out.println("Array after bubble sort:");
-        System.out.println(Arrays.toString(bubbleArray));
-        System.out.println();
+//        System.out.println("Array before bubble sort:");
+//        System.out.println(Arrays.toString(bubbleArray));
+//        bubbleSort(bubbleArray);
+//        System.out.println("Array after bubble sort:");
+//        System.out.println(Arrays.toString(bubbleArray));
+//        System.out.println();
+
 
 //        System.out.println("Array before selection sort:");
 //        System.out.println(Arrays.toString(selectionArray));
@@ -39,7 +42,13 @@ public class Sort {
 //        System.out.println("Array after insertion sort:");
 //        System.out.println(Arrays.toString(insertionArray));
 
-        // TODO Test your string sort here
+
+//        System.out.println("Array before strBubble sort:");
+//        System.out.println(Arrays.toString(strBubbleArray));
+//        strBubbleSort(strBubbleArray);
+//        System.out.println("Array after strBubble sort:");
+//        System.out.println(Arrays.toString(strBubbleArray));
+//        System.out.println();
     }
 
     /**
@@ -48,6 +57,14 @@ public class Sort {
      */
     public static void bubbleSort(int[] numbers) {
         // Implement your sort, call a helper swap method
+        int len = numbers.length;
+        for (int i = 0; i < len - 1; i++){
+            for (int j = 0; j < len - i - 1; j++){
+                if (numbers[j] > numbers[j+1]){
+                    swap(numbers, j,j + 1);
+                }
+            }
+        }
     }
 
     /**
@@ -59,8 +76,29 @@ public class Sort {
      */
     public static void swap(int[] numbers, int indexA, int indexB) {
         // swap the elements at indexA and indexB
+        int temp = numbers[indexA];
+        numbers[indexA] = numbers[indexB];
+        numbers[indexB] = temp;
     }
 
+    // bubble sort for strings
+    public static void strBubbleSort(String[] strings){
+        for (int i = 0; i < strings.length; i++){
+            for (int j = strings.length - 1; j > i; j--){
+                if (strings[j].compareTo(strings[j-1]) < 0){
+                    strSwap(strings,j, j-1);
+                }
+            }
+        }
+
+    }
+    // swap method for String bubble sort
+    public static void strSwap(String[] strings, int indexA, int indexB) {
+        // swap the elements at indexA and indexB
+        String temp = strings[indexA];
+        strings[indexA] = strings[indexB];
+        strings[indexB] = temp;
+    }
     // selection sort for ints
     public static void selectionSort(int[] numbers) {
         // Implement your sort, call swapSelection(int[] intList, int i, int nextMin)
