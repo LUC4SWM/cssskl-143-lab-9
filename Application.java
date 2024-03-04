@@ -1,7 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /*
  * The Application Class is both a Window and an Event Handler (or will be)
@@ -9,7 +8,7 @@ import javax.swing.JFrame;
  */
 
 // TODO: Modify this class so that it implements ActionListener
-public class Application extends JFrame {
+public class Application extends JFrame implements ActionListener {
 	JButton myButton = new JButton( "Hello World");
 
 	public Application() {
@@ -25,7 +24,7 @@ public class Application extends JFrame {
 		this.add(myButton);
 		
 		// TODO: when this class implements actionlistener, the line below will compile
-//		myButton.addActionListener(this);
+		myButton.addActionListener(this);
 	}
 
 	// TODO: Implement the actionPerformed method
@@ -33,5 +32,10 @@ public class Application extends JFrame {
 	// A one line main
 	public static void main(String[] args) {
 		JFrame app = new Application();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JOptionPane j = new JOptionPane(e);
 	}
 }
