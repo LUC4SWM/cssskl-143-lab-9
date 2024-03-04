@@ -36,11 +36,11 @@ public class Sort {
 //        System.out.println(Arrays.toString(selectionArray));
 //        System.out.println();
 //
-//        System.out.println("Array before insertion sort:");
-//        System.out.println(Arrays.toString(insertionArray));
-//        insertionSort(insertionArray);
-//        System.out.println("Array after insertion sort:");
-//        System.out.println(Arrays.toString(insertionArray));
+        System.out.println("Array before insertion sort:");
+        System.out.println(Arrays.toString(insertionArray));
+        insertionSort(insertionArray);
+        System.out.println("Array after insertion sort:");
+        System.out.println(Arrays.toString(insertionArray));
 
 
 //        System.out.println("Array before strBubble sort:");
@@ -102,7 +102,16 @@ public class Sort {
     // selection sort for ints
     public static void selectionSort(int[] numbers) {
         // Implement your sort, call swapSelection(int[] intList, int i, int nextMin)
+        for (int i = 0; i < numbers.length - 1; i++){
+            int minIdx = findSmallest(numbers, i, numbers.length);
+            swap(numbers, i, minIdx);
+        }
     }
+    /* While the findSmallest method makes the code cleaner, both versions of the selection sort have O(n^2) time complexity.
+    * This is because both have some form of nested loops, the 2nd one just has it running in a helper function.
+    * */
+
+
 
     public static int findSmallest(int[] arr, int begin, int end) {
         int minIndex = begin;
@@ -122,5 +131,14 @@ public class Sort {
      */
     public static void insertionSort(int[] numbers) {
         // Implement your insertion sort
+        for (int j = 0; j < numbers.length; j++){
+            int key = numbers[j];
+            int i = j - 1;
+            while (i >= 0 && numbers[i] > key){
+                numbers[i + 1] = numbers[i];
+                i--;
+            }
+            numbers[i + 1] = key;
+        }
     }
 }
